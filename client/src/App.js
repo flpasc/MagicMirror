@@ -10,6 +10,7 @@ function App() {
 		<div className='app--container'>
 			<div className='date-time'>
 				<Clock />
+				<Date />
 			</div>
 		</div>
 	)

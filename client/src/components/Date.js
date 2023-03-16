@@ -6,7 +6,7 @@ export default function Date() {
 	useEffect(() => {
 		let interval = null
 		interval = setInterval(() => {
-			fetch('/date')
+			fetch('/api/v1/date')
 				.then((res) => res.json())
 				.then((data) => setcurrentDate(data))
 				.catch((error) => console.log(error))
