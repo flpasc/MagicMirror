@@ -17,3 +17,5 @@ const PokemonSchema = new mongoose.Schema({
 		trim: true,
 	},
 })
+
+module.exports = mongoose.model('PokemonData', PokemonSchema)
