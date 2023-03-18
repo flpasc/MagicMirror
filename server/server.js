@@ -1,9 +1,10 @@
 const express = require('express')
-const connectDB = require('./db/connect')
+const connectPokeDB = require('./db/connect')
 const app = express()
 const clock = require('./routes/clock')
 const date = require('./routes/date')
 const poke = require('./routes/poke')
+const startPokeSchedule = require('./services/startPokeSchedule')
 
 //middleware
 app.get(express.json())
@@ -17,7 +18,7 @@ const PORT = 6000
 
 const start = async () => {
 	try {
-		await connectDB()
+		await connectPokeDB()
 		app.listen(PORT, () => console.log(`Server started on port ${PORT}..`))
 	} catch (error) {
 		console.log(error)
