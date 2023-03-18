@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 export default function Date() {
-	const [currentDate, setcurrentDate] = useState('')
+	const [currentDate, setcurrentDate] = useState({})
 
 	useEffect(() => {
 		let interval = null
