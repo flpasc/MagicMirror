@@ -16,4 +16,6 @@ const PokemonSchema = new mongoose.Schema(
 	{ collection: 'weeklyPoke' }
 )
 
+PokemonSchema.index({ _id: 1 })
+
 module.exports = mongoose.model('PokemonData', PokemonSchema)

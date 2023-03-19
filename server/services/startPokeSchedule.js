@@ -1,17 +1,18 @@
 const cron = require('node-cron')
-const deletePoke = require('./deletePoke')
+const updatePoke = require('./updatePoke')
 const fetchPoke = require('./fetchPoke')
 const storePoke = require('./storePoke')
 
 const getNewPokeArray = async () => {
+	await updatePoke()
+
 	let weeklyPoke = []
 
 	weeklyPoke = await fetchPoke()
-	await deletePoke()
-	await storePoke(weeklyPoke)
+	storePoke(weeklyPoke)
 }
 
-const startPokeSchedule = cron.schedule('*/10 * * * * *', () => {
+const startPokeSchedule = cron.schedule('*/10 * * * * *', async () => {
 	getNewPokeArray()
 })
 module.exports = startPokeSchedule
