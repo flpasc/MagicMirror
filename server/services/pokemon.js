@@ -34,8 +34,7 @@ async function fetchPokemonData() {
 
 		//error handling
 	} catch (error) {
-		console.log(error)
-		console.log('unable to fetch from pokeAPI')
+		console.log('unable to fetch from pokeAPI', error)
 	}
 }
 

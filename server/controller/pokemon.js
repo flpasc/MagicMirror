@@ -12,9 +12,6 @@ const getDailyPokemon = async (req, res) => {
 	}
 }
 
-// write code to get the pokemon depending on id (1= monday 2= tuesday..)
-// make a call from the client
-
 module.exports = {
 	getDailyPokemon,
 }

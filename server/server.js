@@ -4,6 +4,7 @@ const app = express()
 const clock = require('./routes/clock')
 const date = require('./routes/date')
 const pokemon = require('./routes/pokemon')
+const weather = require('./routes/weather')
 const scheduler = require('./services/scheduler')
 
 //middleware
@@ -13,6 +14,7 @@ app.get(express.json())
 app.use('/api/v1/clock', clock)
 app.use('/api/v1/date', date)
 app.use('/api/v1/poke', pokemon)
+app.use('/api/v1/weather', weather)
 
 const PORT = 6000
 
