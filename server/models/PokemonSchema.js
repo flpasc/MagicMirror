@@ -2,6 +2,11 @@ const mongoose = require('mongoose')
 
 const PokemonSchema = new mongoose.Schema(
 	{
+		customId: {
+			type: Number,
+			required: true,
+			trim: true,
+		},
 		name: {
 			type: String,
 			required: [true, 'must provide a name'],
@@ -15,7 +20,5 @@ const PokemonSchema = new mongoose.Schema(
 	},
 	{ collection: 'weeklyPoke' }
 )
-
-PokemonSchema.index({ _id: 1 })
 
 module.exports = mongoose.model('PokemonData', PokemonSchema)

@@ -8,9 +8,12 @@ import Weather from './components/Weather'
 function App() {
 	return (
 		<div className='app--container'>
-			<div className='date-time'>
+			<div className='corner--top-left'>
 				<Clock />
+			</div>
+			<div className='corner--top-right'>
 				<Date />
+				<Poke />
 			</div>
 		</div>
 	)

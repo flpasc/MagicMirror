@@ -4,7 +4,7 @@ const app = express()
 const clock = require('./routes/clock')
 const date = require('./routes/date')
 const poke = require('./routes/poke')
-const startPokeSchedule = require('./services/startPokeSchedule')
+const scheduler = require('./services/scheduler')
 
 //middleware
 app.get(express.json())
