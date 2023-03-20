@@ -1,18 +1,26 @@
-const axios = require('axios')
 const mongoose = require('mongoose')
-const WeatherData = require('../models/WeatherSchema')
-const fetchCurrentWeather = require('../services/weather')
-
-const lat = 50.92696
-const lon = 11.58696
+const weatherData = require('../models/WeatherSchema')
+const { fetchCurrentWeather, fetchWeatherForecast } = require('../services/weather')
 
 const getCurrentWeather = async (req, res) => {
 	try {
-		const weather = fetchCurrentWeather()
-		res.send({ name: 'huhu' })
+		const currentWeather = await fetchCurrentWeather()
+		res.send(currentWeather.data)
 	} catch (error) {
-		console.log('Error fetching current weather', error)
+		console.log('Error fetching daily Pokemon', error)
 	}
 }
 
-module.exports = getCurrentWeather
+const getCurrentForecast = async (req, res) => {
+	try {
+		const currentForecast = await fetchWeatherForecast()
+		res.send(currentForecast.data)
+	} catch (error) {
+		console.log('Error fetching forecast data', error)
+	}
+}
+
+module.exports = {
+	getCurrentWeather,
+	getCurrentForecast,
+}

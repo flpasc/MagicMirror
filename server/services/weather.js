@@ -25,7 +25,12 @@ async function fetchCurrentWeather() {
 async function fetchWeatherForecast() {
 	try {
 		const forecast = await axios.get(
-			'api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=' + API_KEY
+			'http://api.openweathermap.org/data/2.5/forecast?lat=' +
+				lat +
+				'&lon=' +
+				lon +
+				'&appid=' +
+				API_KEY
 		)
 		return forecast
 	} catch (error) {
