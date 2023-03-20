@@ -1,0 +1,13 @@
+.openai--container {
+	display: flex;
+	grid-area: 3 / 1 / -1 / -1;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
+}
+
+.openai--response {
+	font-size: 20px;
+	display: flex;
+	text-align: center;
+}

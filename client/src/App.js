@@ -16,8 +16,8 @@ function App() {
 			<div className='corner--top-right'>
 				<Date />
 				<Poke />
-				<OpenAi />
 			</div>
+			<OpenAi />
 		</div>
 	)
 }
