@@ -42,5 +42,3 @@ module.exports = {
 	fetchCurrentWeather,
 	fetchWeatherForecast,
 }
-
-// https://api.openweathermap.org/data/2.5/weather?lat=50.92696&lon=11.58696&appid=ba838de580d82dd8a358c9ee77591f26
