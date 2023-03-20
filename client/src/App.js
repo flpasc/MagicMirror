@@ -4,6 +4,7 @@ import Clock from './components/Clock'
 import Date from './components/Date'
 import Poke from './components/Poke'
 import Weather from './components/Weather'
+import OpenAi from './components/OpenAi'
 
 function App() {
 	return (
@@ -15,6 +16,7 @@ function App() {
 			<div className='corner--top-right'>
 				<Date />
 				<Poke />
+				<OpenAi />
 			</div>
 		</div>
 	)

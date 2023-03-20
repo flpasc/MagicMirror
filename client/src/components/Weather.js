@@ -57,7 +57,7 @@ export default function Weather() {
 		let forecastData = []
 		for (let i = 0; i < 5; i++) {
 			const { icon } = currentForecast.list[i + i * 8].weather[0]
-			const { temp, feels_like } = currentForecast.list[0].main
+			const { temp, feels_like } = currentForecast.list[i + i * 8].main
 			forecastData.push(
 				<ForecastItem key={uuidv4()} icon={icon} temp={temp} feelslike={feels_like} />
 			)
