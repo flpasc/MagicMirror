@@ -3,7 +3,7 @@ const connectPokeDB = require('./db/connect')
 const app = express()
 const clock = require('./routes/clock')
 const date = require('./routes/date')
-const poke = require('./routes/poke')
+const pokemon = require('./routes/pokemon')
 const scheduler = require('./services/scheduler')
 
 //middleware
@@ -12,7 +12,7 @@ app.get(express.json())
 //routes
 app.use('/api/v1/clock', clock)
 app.use('/api/v1/date', date)
-app.use('/api/v1/poke', poke)
+app.use('/api/v1/poke', pokemon)
 
 const PORT = 6000
 

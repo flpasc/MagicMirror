@@ -1,2 +1,9 @@
 .poke--container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.pokemon--image {
+	max-width: 200px;
 }
