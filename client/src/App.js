@@ -10,6 +10,7 @@ function App() {
 		<div className='app--container'>
 			<div className='corner--top-left'>
 				<Clock />
+				<Weather />
 			</div>
 			<div className='corner--top-right'>
 				<Date />

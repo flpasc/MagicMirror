@@ -13,7 +13,7 @@ async function fetchCurrentWeather() {
 				lat +
 				'&lon=' +
 				lon +
-				'&appid=' +
+				'&units=metric&appid=' +
 				API_KEY
 		)
 		return currentWeater
@@ -29,7 +29,7 @@ async function fetchWeatherForecast() {
 				lat +
 				'&lon=' +
 				lon +
-				'&appid=' +
+				'&units=metric&appid=' +
 				API_KEY
 		)
 		return forecast
