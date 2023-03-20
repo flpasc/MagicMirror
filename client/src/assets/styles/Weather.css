@@ -2,3 +2,20 @@
 	grid-area: 1 / 3 / -1 / -1;
 	font-size: 20px;
 }
+
+.weather--now {
+	display: grid;
+}
+
+.weather--forecast {
+	display: flex;
+}
+
+.forecast--item {
+	display: flex;
+	flex-direction: ;
+}
+
+.forecast--icon {
+	width: 30px;
+}

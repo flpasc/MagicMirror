@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Weather.css'
 import generateWeatherIconUrl from '../utils/generateWeatherIconUrl'
+import ForecastItem from './ForecastItem'
+import { v4 as uuidv4 } from 'uuid'
 
 export default function Weather() {
 	const [currentWeather, setCurrentWeather] = useState({})
@@ -30,10 +32,13 @@ export default function Weather() {
 
 	if (!fetchForecastCompleted || !fetchNowCompleted) return <div>Guessing weather..</div>
 
+	//collecting the current weather data
 	const { name } = currentWeather
 	const { pressure, temp, feels_like, humidity } = currentWeather.main
 	const { speed, deg } = currentWeather.wind
 	const { description, icon } = currentWeather.weather[0]
+
+	//collecting the forecast data
 
 	const weatherNowElement = (
 		<>
@@ -48,5 +53,22 @@ export default function Weather() {
 		</>
 	)
 
-	return <div className='weather--container'>{weatherNowElement}</div>
+	function weatherForecastElements() {
+		let forecastData = []
+		for (let i = 0; i < 5; i++) {
+			const { icon } = currentForecast.list[i + i * 8].weather[0]
+			const { temp, feels_like } = currentForecast.list[0].main
+			forecastData.push(
+				<ForecastItem key={uuidv4()} icon={icon} temp={temp} feelslike={feels_like} />
+			)
+		}
+		return forecastData
+	}
+
+	return (
+		<div className='weather--container'>
+			<div className='weather--now'>{weatherNowElement}</div>
+			<div className='weather--forecast'>{weatherForecastElements()}</div>
+		</div>
+	)
 }
