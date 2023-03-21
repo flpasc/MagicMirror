@@ -1,3 +1,7 @@
+.weather--forecast {
+	display: flex;
+}
+
 .forecast--item {
 	display: flex;
 	flex-direction: column;
@@ -7,4 +11,8 @@
 
 .forecast--day {
 	font-size: 10px;
+}
+
+.forecast--icon {
+	width: 30px;
 }

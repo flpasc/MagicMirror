@@ -7,14 +7,6 @@
 	display: grid;
 }
 
-.weather--forecast {
-	display: flex;
-}
-
-.forecast--item {
-	display: flex;
-}
-
-.forecast--icon {
-	width: 30px;
+.weather--icon {
+	width: 200px;
 }
