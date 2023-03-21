@@ -4,6 +4,7 @@ import generateWeatherIconUrl from '../utils/generateWeatherIconUrl'
 import ForecastItem from './ForecastItem'
 import { v4 as uuidv4 } from 'uuid'
 import getDayString from '../utils/getDayAsString'
+import WeatherItem from './WeatherItem'
 
 export default function Weather() {
 	const [currentWeather, setCurrentWeather] = useState({})
@@ -33,28 +34,6 @@ export default function Weather() {
 
 	if (!fetchForecastCompleted || !fetchNowCompleted) return <div>Guessing weather..</div>
 
-	//collecting the current weather data
-	const { name } = currentWeather
-	const { pressure, temp, feels_like, humidity } = currentWeather.main
-	const { speed, deg } = currentWeather.wind
-	const { description, icon } = currentWeather.weather[0]
-
-	const weatherNowElement = (
-		<>
-			<img
-				className='weather--icon'
-				src={`../../assets/images/weather-icons/${icon}.png`}
-				alt=''></img>
-			<div className='weather--city'>{name}</div>
-			<div className='weather--temperature'>{Math.round(temp)}°</div>
-			<div className='weather--feelslike'>{Math.round(feels_like)}°</div>
-			<div className='weather--info'>{description}</div>
-			<div className='weather--humidity'>{humidity}%</div>
-			<div className='weather--wind'>{speed} km/h</div>
-			<div className='weather--degree'>{deg}°</div>
-		</>
-	)
-
 	function weatherForecastElements() {
 		let forecastData = []
 		for (let i = 0; i < 5; i++) {
@@ -76,7 +55,7 @@ export default function Weather() {
 
 	return (
 		<div className='weather--container'>
-			<div className='weather--now'>{weatherNowElement}</div>
+			<div className='weather--now'>{WeatherItem}</div>
 			<div className='weather--forecast'>{weatherForecastElements()}</div>
 		</div>
 	)
