@@ -6,4 +6,5 @@ const pokeSchedule = cron.schedule('* * * * 0', async () => {
 	await updatePokemonData()
 	await storePokemonData(weeklyPokemon)
 })
+
 module.exports = pokeSchedule

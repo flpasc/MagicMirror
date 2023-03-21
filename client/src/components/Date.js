@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Date.css'
+import Moment from 'react-moment'
 
 export default function Date() {
 	const [currentDate, setCurrentDate] = useState({})
@@ -15,5 +16,5 @@ export default function Date() {
 		return () => clearInterval(interval)
 	}, [])
 
-	return <div>{currentDate.date}</div>
+	return <Moment format='LL'>{currentDate}</Moment>
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../assets/styles/Clock.css'
+import Moment from 'react-moment'
 
 export default function Clock() {
 	const [currentTime, setCurrentTime] = useState('')
@@ -15,10 +16,14 @@ export default function Clock() {
 
 		return () => clearInterval(interval)
 	}, [])
-
 	return (
 		<div className='clock--container'>
-			<div>{currentTime.time}</div>
+			<Moment className='clock--houres' format='hh'>
+				{currentTime.time}
+			</Moment>
+			<Moment className='clock--minutes' format='mm'>
+				{currentTime.time}
+			</Moment>
 		</div>
 	)
 }

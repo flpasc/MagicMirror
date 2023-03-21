@@ -3,6 +3,7 @@ import '../assets/styles/Weather.css'
 import generateWeatherIconUrl from '../utils/generateWeatherIconUrl'
 import ForecastItem from './ForecastItem'
 import { v4 as uuidv4 } from 'uuid'
+import getDayString from '../utils/getDayAsString'
 
 export default function Weather() {
 	const [currentWeather, setCurrentWeather] = useState({})
@@ -58,8 +59,15 @@ export default function Weather() {
 		for (let i = 0; i < 5; i++) {
 			const { icon } = currentForecast.list[i + i * 8].weather[0]
 			const { temp, feels_like } = currentForecast.list[i + i * 8].main
+			const dayString = getDayString(i)
 			forecastData.push(
-				<ForecastItem key={uuidv4()} icon={icon} temp={temp} feelslike={feels_like} />
+				<ForecastItem
+					key={uuidv4()}
+					icon={icon}
+					temp={temp}
+					feelslike={feels_like}
+					day={dayString}
+				/>
 			)
 		}
 		return forecastData
