@@ -1,0 +1,11 @@
+.date--container {
+	font-size: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.29);
+	padding: 5px 10px;
+	margin: 5px;
+	border-radius: 10px;
+	position: relative;
+	bottom: 90px;
+	right: 20px;
+	box-shadow: 2px 2px 8px rgba(255, 255, 255, 0.258);
+}

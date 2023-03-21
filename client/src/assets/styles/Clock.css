@@ -1,0 +1,26 @@
+.clock--container {
+	position: relative;
+	right: 40px;
+}
+
+.clock--houres {
+	font-size: 110px;
+	position: relative;
+	bottom: 10px;
+}
+
+.clock--minutes {
+	opacity: 0.5;
+	font-size: 40px;
+	position: relative;
+	bottom: 50px;
+	right: 2px;
+}
+
+.clock--uhr {
+	opacity: 0.8;
+	position: relative;
+	left: 120px;
+	bottom: 80px;
+	font-size: 40px;
+}

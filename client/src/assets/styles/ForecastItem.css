@@ -1,5 +1,23 @@
 .weather--forecast {
+	position: relative;
+	bottom: 120px;
 	display: flex;
+}
+
+.weather--forecast > div:nth-child(2) {
+	opacity: 0.8;
+}
+
+.weather--forecast > div:nth-child(3) {
+	opacity: 0.6;
+}
+
+.weather--forecast > div:nth-child(4) {
+	opacity: 0.4;
+}
+
+.weather--forecast > div:nth-child(5) {
+	opacity: 0.2;
 }
 
 .forecast--item {
@@ -7,12 +25,26 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
+	border: 1px solid rgba(255, 255, 255, 0.215);
+	margin: 5px;
+	border-radius: 10px;
+	padding: 5px;
+	box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.293);
 }
 
 .forecast--day {
 	font-size: 10px;
+	/* border: 1px solid rgba(255, 255, 255, 0.485); */
+	padding: 2px 5px;
+	border-radius: 5px;
 }
 
 .forecast--icon {
 	width: 30px;
+}
+
+.forecast--temp {
+	/* border: 1px solid rgba(255, 255, 255, 0.171); */
+	padding: 2px 5px;
+	border-radius: 5px;
 }

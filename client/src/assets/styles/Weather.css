@@ -8,5 +8,35 @@
 }
 
 .weather--icon {
-	width: 200px;
+	width: 150px;
+	position: relative;
+	bottom: 80px;
+	left: 16px;
+}
+
+.weather--temperature {
+	font-size: 60px;
+	position: relative;
+	bottom: 0px;
+	left: 0px;
+}
+
+.weather--city {
+	position: relative;
+	bottom: 160px;
+	font-size: 10px;
+}
+
+.weather--info {
+	position: relative;
+	bottom: 120px;
+	padding-block: 10px;
+	left: 80px;
+	font-size: 14px;
+}
+
+.weather--wind {
+	position: relative;
+	bottom: 180px;
+	font-size: 10px;
 }

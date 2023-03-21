@@ -16,5 +16,9 @@ export default function Date() {
 		return () => clearInterval(interval)
 	}, [])
 
-	return <Moment format='LL'>{currentDate}</Moment>
+	return (
+		<Moment className='date--container' format='LL'>
+			{currentDate}
+		</Moment>
+	)
 }

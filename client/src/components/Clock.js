@@ -18,12 +18,13 @@ export default function Clock() {
 	}, [])
 	return (
 		<div className='clock--container'>
-			<Moment className='clock--houres' format='hh'>
+			<Moment className='clock--houres' format='HH'>
 				{currentTime.time}
 			</Moment>
 			<Moment className='clock--minutes' format='mm'>
 				{currentTime.time}
 			</Moment>
+			<div className='clock--uhr'>Uhr</div>
 		</div>
 	)
 }

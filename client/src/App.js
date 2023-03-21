@@ -13,6 +13,9 @@ function App() {
 				<Weather />
 			</div>
 			<div className='corner--top-right'>
+				<Clock />
+				<Date />
+
 				<Poke />
 			</div>
 			<OpenAi />
