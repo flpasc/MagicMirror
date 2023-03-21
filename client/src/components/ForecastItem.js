@@ -9,7 +9,15 @@ export default function ForecastItem(props) {
 		<div className='forecast--item'>
 			<div className='forecast--day'>{day}</div>
 			<img className='forecast--icon' src={generateWeatherIconUrl(icon)} alt='' />
-			<div className='forecast--temp'>{Math.round(temp)}</div>
+			<div className='forecast--temp'>{Math.round(temp)}°</div>
 		</div>
 	)
 }
+
+;<div className='testDiv'>
+	<div className='opacity1'></div>
+	<div className='opacity2'></div>
+	<div className='opacity3'></div>
+	<div className='opacity4'></div>
+	<div className='opacity5'></div>
+</div>
