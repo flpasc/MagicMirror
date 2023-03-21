@@ -4,7 +4,6 @@ import generateWeatherIconUrl from '../utils/generateWeatherIconUrl'
 import ForecastItem from './ForecastItem'
 import { v4 as uuidv4 } from 'uuid'
 import getDayString from '../utils/getDayAsString'
-import '../assets/images/weather-icons'
 
 export default function Weather() {
 	const [currentWeather, setCurrentWeather] = useState({})
@@ -44,7 +43,7 @@ export default function Weather() {
 		<>
 			<img
 				className='weather--icon'
-				src={`../assets/images/weather-icons/${icon}.png`}
+				src={`../../assets/images/weather-icons/${icon}.png`}
 				alt=''></img>
 			<div className='weather--city'>{name}</div>
 			<div className='weather--temperature'>{Math.round(temp)}°</div>
