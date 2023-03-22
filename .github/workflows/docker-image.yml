@@ -1,0 +1,45 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+
+      - uses: pmorelli92/github-container-registry-build-push@2.1.0
+        name: Build and Publish latest service image
+        with:
+          github-push-secret: ${{secrets.GITHUB_TOKEN}}
+          docker-image-name: magic-mirror-api
+          docker-image-tag: latest # optional
+          dockerfile-path: ./server/Dockerfile # optional
+          build-context: ./server
+
+      - uses: pmorelli92/github-container-registry-build-push@2.1.0
+        name: Build and Publish latest service image
+        with:
+          github-push-secret: ${{secrets.GITHUB_TOKEN}}
+          docker-image-name: magic-mirror-client
+          docker-image-tag: latest # optional
+          dockerfile-path: ./client/Dockerfile # optional
+          build-context: ./client
