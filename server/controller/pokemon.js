@@ -5,7 +5,7 @@ const getDailyPokemon = async (req, res) => {
 	const today = new Date().getDay()
 
 	try {
-		const dailyPokemon = await Pokemon.find({ customId: 1 })
+		const dailyPokemon = await Pokemon.find({ customId: today })
 		res.send(dailyPokemon[0])
 	} catch (error) {
 		console.log('Error fetching daily Pokemon', error)

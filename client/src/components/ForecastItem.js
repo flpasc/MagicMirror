@@ -13,11 +13,3 @@ export default function ForecastItem(props) {
 		</div>
 	)
 }
-
-;<div className='testDiv'>
-	<div className='opacity1'></div>
-	<div className='opacity2'></div>
-	<div className='opacity3'></div>
-	<div className='opacity4'></div>
-	<div className='opacity5'></div>
-</div>
