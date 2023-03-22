@@ -23,31 +23,13 @@ jobs:
       id-token: write
 
     steps:
-      # Login against a Docker registry except on PR
-      # https://github.com/docker/login-action
-      - name: Log into registry ${{ env.REGISTRY }}
-        if: github.event_name != 'pull_request'
-        uses: docker/login-action@v2
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v2
+        name: Checkout repository
 
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
-      - name: Extract Docker metadata
-        id: meta
-        uses: docker/metadata-action@v2
+      - uses: pmorelli92/github-container-registry-build-push@2.1.0
+        name: Build and Publish latest service image
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          
-      # Build and push Docker image with Buildx (don't push on PR)
-      # https://github.com/docker/build-push-action
-      - name: Build and push Magic Mirror API JS App image
-        id: build-and-push-mm-api
-        uses: docker/build-push-action@v4
-        with:
-          context: ./server/.
-          dockerfile: ./server/Dockerfile
-          push: true
-          tags: magic-mirror-api:latest
+          github-push-secret: ${{secrets.GITHUB_TOKEN}}
+          docker-image-name: magic-mirror-api
+          docker-image-tag: latest # optional
+          dockerfile-path: ./server/Dockerfile # optional
