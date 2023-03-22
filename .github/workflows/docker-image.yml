@@ -47,6 +47,6 @@ jobs:
         id: build-and-push-mm-api
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}/server"
+          context: ./server/
           push: true
           tags: magic-mirror-api:latest
