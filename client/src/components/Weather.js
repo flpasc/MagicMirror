@@ -7,52 +7,76 @@ import getDayString from '../utils/getDayAsString'
 export default function Weather() {
 	const [currentWeather, setCurrentWeather] = useState({})
 	const [currentForecast, setCurrentForecast] = useState({})
-	const [fetchNowCompleted, setFetchNowcompleted] = useState(false)
-	const [fetchForecastCompleted, setFetchForecastcompleted] = useState(false)
+	const [fetchNowCompleted, setFetchNowCompleted] = useState(false)
+	const [fetchForecastCompleted, setFetchForecastCompleted] = useState(false)
+	const [initialize, setInitialize] = useState(false)
 
 	useEffect(() => {
-		fetch('/api/v1/weather/now')
-			.then((res) => res.json())
-			.then((data) => {
-				setCurrentWeather(data)
-				setFetchNowcompleted(true)
-			})
-			.catch((error) => console.log('Error fetching weather from server', error))
-	}, [])
+		if (!initialize) {
+			const init = async () => {
+				await fetch('/api/v1/weather/forecast')
+					.then((res) => res.json())
+					.then((data) => {
+						setCurrentForecast(data)
+						setFetchForecastCompleted(true)
+						setInitialize(true)
+					})
+					.catch((error) => console.log('Error fetching forecast from server', error))
+				await fetch('/api/v1/weather/now')
+					.then((res) => res.json())
+					.then((data) => {
+						setCurrentWeather(data)
+						setFetchNowCompleted(true)
+					})
+					.catch((error) => console.log('Error fetching weather from server', error))
+			}
+			init()
+		}
 
-	useEffect(() => {
-		fetch('/api/v1/weather/forecast')
-			.then((res) => res.json())
-			.then((data) => {
-				setCurrentForecast(data)
-				setFetchForecastcompleted(true)
-			})
-			.catch((error) => console.log('Error fetching forecast from server', error))
-	}, [])
-
-	if (!fetchForecastCompleted || !fetchNowCompleted) return <div>Guessing weather..</div>
+		const interval = setInterval(async () => {
+			await fetch('/api/v1/weather/forecast')
+				.then((res) => res.json())
+				.then((data) => {
+					setCurrentForecast(data)
+					setFetchForecastCompleted(true)
+				})
+				.catch((error) => console.log('Error fetching forecast from server', error))
+			await fetch('/api/v1/weather/now')
+				.then((res) => res.json())
+				.then((data) => {
+					setCurrentWeather(data)
+					setFetchNowCompleted(true)
+				})
+				.catch((error) => console.log('Error fetching weather from server', error))
+		}, 1000 * 60 * 10)
+		return () => clearInterval(interval)
+	}, [initialize])
 
 	//collecting the current weather data
-	const { name } = currentWeather
-	const { pressure, temp, feels_like, humidity } = currentWeather.main
-	const { speed, deg } = currentWeather.wind
-	const { description, icon } = currentWeather.weather[0]
 
-	const weatherNowElement = (
-		<>
-			<div className='weather--temperature'>{Math.round(temp)}°</div>
-			<img
-				className='weather--icon'
-				src={require(`../assets/images/weather-icons/${icon}.png`)}
-				alt=''></img>
-			<div className='weather--info'>{description}</div>
-			{/* <div className='weather--city'>{name}</div> */}
-			{/* <div className='weather--feelslike'>{Math.round(feels_like)}°</div> */}
-			{/* <div className='weather--humidity'>{humidity}%</div> */}
-			{/* <div className='weather--wind'>{speed} km/h</div> */}
-			{/* <div className='weather--degree'>{deg}°</div> */}
-		</>
-	)
+	function weatherNowElement() {
+		if (!fetchNowCompleted || !fetchForecastCompleted) return <div>Gueassing weather..</div>
+		const { name } = currentWeather
+		const { pressure, temp, feels_like, humidity } = currentWeather.main
+		const { speed, deg } = currentWeather.wind
+		const { description, icon } = currentWeather.weather[0]
+		console.log(currentWeather)
+		return (
+			<>
+				<div className='weather--temperature'>{Math.round(temp)}°</div>
+				<img
+					className='weather--icon'
+					src={require(`../assets/images/weather-icons/${icon}.png`)}
+					alt=''></img>
+				<div className='weather--info'>{description}</div>
+				{/* <div className='weather--city'>{name}</div> */}
+				{/* <div className='weather--feelslike'>{Math.round(feels_like)}°</div> */}
+				{/* <div className='weather--humidity'>{humidity}%</div> */}
+				{/* <div className='weather--wind'>{speed} km/h</div> */}
+				{/* <div className='weather--degree'>{deg}°</div> */}
+			</>
+		)
+	}
 
 	function weatherForecastElements() {
 		let forecastData = []
@@ -75,8 +99,10 @@ export default function Weather() {
 
 	return (
 		<div className='weather--container'>
-			<div className='weather--now'>{weatherNowElement}</div>
-			<div className='weather--forecast'>{weatherForecastElements()}</div>
+			<div className='weather--now'>{weatherNowElement()}</div>
+			{fetchForecastCompleted && (
+				<div className='weather--forecast'>{weatherForecastElements()}</div>
+			)}
 		</div>
 	)
 }
