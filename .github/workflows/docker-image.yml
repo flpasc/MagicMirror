@@ -33,3 +33,4 @@ jobs:
           docker-image-name: magic-mirror-api
           docker-image-tag: latest # optional
           dockerfile-path: ./server/Dockerfile # optional
+          build-context: ./server
