@@ -30,9 +30,9 @@ services:
       - 3000:3000
     depends_on:
       - mongodb_container
-      - server_container
+      - magic_mirror_api
 
-  server_container:
+  magic_mirror_api:
     build:
       context: ./server
       dockerfile: Dockerfile
