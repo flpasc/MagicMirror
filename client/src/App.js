@@ -15,7 +15,6 @@ function App() {
 			<div className='corner--top-right'>
 				<Clock />
 				<Date />
-
 				<Poke />
 			</div>
 			<OpenAi />
