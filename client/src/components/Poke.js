@@ -7,13 +7,16 @@ export default function Poke() {
 	const [fetchCompleted, setFetchcompleted] = useState(false)
 
 	useEffect(() => {
-		fetch('/api/v1/poke')
-			.then((res) => res.json())
-			.then((data) => {
-				setPokemonOfDay(data)
-				setFetchcompleted(true)
-			})
-			.catch((error) => console.log('Error fetching daily pokemon', error))
+		const init = async () => {
+			await fetch('/api/v1/poke')
+				.then((res) => res.json())
+				.then((data) => {
+					setPokemonOfDay(data)
+					setFetchcompleted(true)
+				})
+				.catch((error) => console.log('Error fetching daily pokemon', error))
+		}
+		init()
 	}, [])
 
 	if (!fetchCompleted) {

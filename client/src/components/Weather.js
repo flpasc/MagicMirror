@@ -55,7 +55,7 @@ export default function Weather() {
 	//collecting the current weather data
 
 	function weatherNowElement() {
-		if (!fetchNowCompleted || !fetchForecastCompleted) return <div>Gueassing weather..</div>
+		if (!fetchNowCompleted || !fetchForecastCompleted) return <div>Guessing weather..</div>
 		const { name } = currentWeather
 		const { pressure, temp, feels_like, humidity } = currentWeather.main
 		const { speed, deg } = currentWeather.wind
