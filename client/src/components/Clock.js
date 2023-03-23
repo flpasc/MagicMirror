@@ -21,10 +21,12 @@ export default function Clock() {
 			<Moment className='clock--houres' format='HH'>
 				{currentTime.time}
 			</Moment>
-			<Moment className='clock--minutes' format='mm'>
-				{currentTime.time}
-			</Moment>
-			<div className='clock--uhr'>Uhr</div>
+			<div className='clock--container-minutes-time'>
+				<Moment className='clock--minutes' format='mm'>
+					{currentTime.time}
+				</Moment>
+				<div className='clock--uhr'>Uhr</div>
+			</div>
 		</div>
 	)
 }
