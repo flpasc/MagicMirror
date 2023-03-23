@@ -60,7 +60,6 @@ export default function Weather() {
 		const { pressure, temp, feels_like, humidity } = currentWeather.main
 		const { speed, deg } = currentWeather.wind
 		const { description, icon } = currentWeather.weather[0]
-		console.log(currentWeather)
 		return (
 			<>
 				<div className='weather--temperature'>{Math.round(temp)}°</div>
