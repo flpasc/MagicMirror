@@ -1,28 +1,32 @@
 .clock--container {
 	padding: 5px;
-	position: relative;
 	right: 10px;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .clock--houres {
 	font-size: 110px;
-	position: relative;
-	bottom: 10px;
 }
 
 .clock--minutes {
+	position: relative;
+	top: 8px;
 	opacity: 0.5;
 	font-size: 50px;
-	position: relative;
-	bottom: 50px;
-	right: 2px;
 }
 
 .clock--uhr {
 	opacity: 0.8;
 	position: relative;
-	padding: 5px;
-	left: 110px;
-	bottom: 85px;
+	bottom: 8px;
 	font-size: 40px;
+}
+
+.clock--container-minutes-time {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 }
