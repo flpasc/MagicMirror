@@ -2,7 +2,8 @@ const axios = require('axios')
 const { Configuration, OpenAIApi } = require('openai')
 
 //Enter openai question here
-const openaiPrompt = 'give me a short random fact about a animal that is totaly not true'
+const openaiPrompt =
+	'give me a short random fact about a animal that is totaly not true but could be true'
 
 const configuration = new Configuration({
 	apiKey: process.env.OPENAI_API_KEY,
