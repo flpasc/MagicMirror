@@ -4,10 +4,10 @@ Client and Server MERN Stack Application which is made to run on a DIY Smart Mir
 
 ## Features
 
-- Node express
+- OpenAI language model integration
 - Docker
+- Node express
 - React
 - PokeAPI & OpenWeatherAPI
-- OpenAI language model integration
 
 ![Screenshot.](./example.png)
