@@ -15,4 +15,4 @@ const pokeSchedule = async () => {
 		await storePokemonData(weeklyPokemon)
 	})
 }
-module.exports = { pokeSchedule, reboot }
+module.exports = { pokeSchedule }
