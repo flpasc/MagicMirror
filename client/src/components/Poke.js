@@ -7,26 +7,27 @@ export default function Poke() {
 	const [fetchCompleted, setFetchcompleted] = useState(false)
 
 	useEffect(() => {
-		const init = async () => {
-			await fetch('/api/v1/poke')
-				.then((res) => res.json())
-				.then((data) => {
-					setPokemonOfDay(data)
-					setFetchcompleted(true)
-				})
-				.catch((error) => console.log('Error fetching daily pokemon', error))
-		}
-		init()
+		const timer = setTimeout(() => {
+			const init = async () => {
+				await fetch('/api/v1/poke')
+					.then((res) => res.json())
+					.then((data) => {
+						setPokemonOfDay(data)
+						setFetchcompleted(true)
+					})
+					.catch((error) => console.log('Error fetching daily pokemon', error))
+			}
+			init()
+		}, 1000 * 10)
+		return () => clearTimeout(timer)
 	}, [])
-
-	if (!fetchCompleted) {
-		return <div>Loading..</div>
-	}
 
 	const dailyPokemonElement = (
 		<>
-			<img className='pokemon--image' src={pokemonOfDay.imgURL} alt='Pokemon of the Day' />
-			<div className='pokemon--name'>{capitalize(pokemonOfDay.name)}</div>
+			{fetchCompleted && (
+				<img className='pokemon--image' src={pokemonOfDay.imgURL} alt='Pokemon of the Day' />
+			)}
+			{fetchCompleted && <div className='pokemon--name'>{capitalize(pokemonOfDay.name)}</div>}
 		</>
 	)
 
