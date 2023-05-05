@@ -7,7 +7,7 @@ export default function OpenAi() {
 
 	useEffect(() => {
 		if (!initialze) {
-			const fetchURL = `${process.env.LOCALHOST}/api/v1/openai`
+			const fetchURL = `http://localhost:6000/api/v1/openai`
 			fetch(fetchURL)
 				.then((res) => res.json())
 				.then((data) => setAiText(data.text))
