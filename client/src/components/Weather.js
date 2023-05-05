@@ -14,7 +14,8 @@ export default function Weather() {
 	useEffect(() => {
 		if (!initialize) {
 			const init = async () => {
-				await fetch('/api/v1/weather/forecast')
+				const fetchURL = `${process.env.LOCALHOST}/api/v1/weather/forecast`
+				await fetch(fetchURL)
 					.then((res) => res.json())
 					.then((data) => {
 						setCurrentForecast(data)

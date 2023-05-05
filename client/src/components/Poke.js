@@ -9,7 +9,8 @@ export default function Poke() {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			const init = async () => {
-				await fetch('/api/v1/poke')
+				const fetchURL = `${process.env.LOCALHOST}/api/v1/poke`
+				await fetch(fetchURL)
 					.then((res) => res.json())
 					.then((data) => {
 						setPokemonOfDay(data)

@@ -1,7 +1,6 @@
 {
 	"name": "client",
 	"version": "0.1.0",
-	"proxy": "http://localhost:6000",
 	"private": true,
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.5",
@@ -9,6 +8,7 @@
 		"@testing-library/user-event": "^13.5.0",
 		"capitalize-first-letter": "^1.0.0",
 		"css-loader": "^6.7.3",
+		"dotenv": "^16.0.3",
 		"file-loader": "^6.2.0",
 		"fileloader": "^2.0.0",
 		"moment": "^2.29.4",
