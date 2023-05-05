@@ -26,7 +26,7 @@ services:
       context: ./server
       dockerfile: Dockerfile
     ports:
-      - 6000:6000
+      - 6600:6600
     depends_on:
       - mongodb_container
     env_file: ./server/.env
