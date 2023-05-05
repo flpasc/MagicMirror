@@ -7,9 +7,11 @@ const pokemon = require('./routes/pokemon')
 const weather = require('./routes/weather')
 const openai = require('./routes/openai')
 const scheduler = require('./services/scheduler')
+const cors = require('cors')
 
 //middleware
 app.get(express.json())
+app.use(cors())
 
 //routes
 app.use('/api/v1/clock', clock)
