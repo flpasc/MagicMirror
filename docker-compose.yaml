@@ -16,7 +16,7 @@ services:
       context: ./client
       dockerfile: Dockerfile
     ports:
-      - 3300:3300
+      - 3000:3000
     depends_on:
       - mongodb_container
       - magic_mirror_api

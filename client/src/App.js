@@ -1,5 +1,4 @@
 import './assets/styles/App.css'
-import React, { useState, useEffect } from 'react'
 import Clock from './components/Clock'
 import Date from './components/DatePicker'
 import Poke from './components/Poke'
