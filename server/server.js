@@ -20,6 +20,12 @@ app.use('/api/v1/poke', pokemon)
 app.use('/api/v1/weather', weather)
 app.use('/api/v1/openai', openai)
 
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*')
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+	next()
+})
+
 const PORT = 6600
 
 const start = async () => {
