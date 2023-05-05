@@ -18,7 +18,7 @@ app.use('/api/v1/poke', pokemon)
 app.use('/api/v1/weather', weather)
 app.use('/api/v1/openai', openai)
 
-const PORT = 6000
+const PORT = 6600
 
 const start = async () => {
 	try {

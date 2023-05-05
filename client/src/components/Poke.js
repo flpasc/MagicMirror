@@ -10,7 +10,7 @@ export default function Poke() {
 		const timer = setTimeout(() => {
 			console.log('weather bevor api call')
 			const init = async () => {
-				const fetchURL = `http://localhost:6000/api/v1/poke`
+				const fetchURL = `http://localhost:6600/api/v1/poke`
 				await fetch(fetchURL)
 					.then((res) => res.json())
 					.then((data) => {
