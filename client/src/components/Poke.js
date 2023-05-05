@@ -15,6 +15,7 @@ export default function Poke() {
 					.then((data) => {
 						setPokemonOfDay(data)
 						setFetchcompleted(true)
+						console.log(data)
 					})
 					.catch((error) => console.log('Error fetching daily pokemon', error))
 			}
