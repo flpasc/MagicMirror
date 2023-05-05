@@ -8,6 +8,7 @@ export default function Poke() {
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
+			console.log('weather bevor api call')
 			const init = async () => {
 				const fetchURL = `${process.env.LOCALHOST}/api/v1/poke`
 				await fetch(fetchURL)
@@ -15,7 +16,7 @@ export default function Poke() {
 					.then((data) => {
 						setPokemonOfDay(data)
 						setFetchcompleted(true)
-						console.log(data)
+						console.log('weather after api call')
 					})
 					.catch((error) => console.log('Error fetching daily pokemon', error))
 			}
