@@ -23,7 +23,7 @@ app.use('/api/v1/clock', clock)
 app.use('/api/v1/date', date)
 app.use('/api/v1/poke', pokemon)
 app.use('/api/v1/weather', weather)
-app.use('/api/v1/openai', openai)
+// app.use('/api/v1/openai', openai)
 
 // Error handling middleware
 app.use((req, res, next) => {

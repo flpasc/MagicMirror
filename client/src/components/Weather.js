@@ -23,7 +23,7 @@ export default function Weather() {
 						setInitialize(true)
 					})
 					.catch((error) => console.log('Error fetching forecast from server', error))
-				await fetch('http://localhost:6600//api/v1/weather/now')
+				await fetch('http://localhost:6600/api/v1/weather/now')
 					.then((res) => res.json())
 					.then((data) => {
 						setCurrentWeather(data)
@@ -35,14 +35,14 @@ export default function Weather() {
 		}
 
 		const interval = setInterval(async () => {
-			await fetch('http://localhost:6600//api/v1/weather/forecast')
+			await fetch('http://localhost:6600/api/v1/weather/forecast')
 				.then((res) => res.json())
 				.then((data) => {
 					setCurrentForecast(data)
 					setFetchForecastCompleted(true)
 				})
 				.catch((error) => console.log('Error fetching forecast from server', error))
-			await fetch('http://localhost:6600//api/v1/weather/now')
+			await fetch('http://localhost:6600/api/v1/weather/now')
 				.then((res) => res.json())
 				.then((data) => {
 					setCurrentWeather(data)
