@@ -1,5 +1,7 @@
 const express = require('express')
 const connectPokeDB = require('./db/connect')
+const morgan = require('morgan')
+const helmet = require('helmet')
 const app = express()
 const clock = require('./routes/clock')
 const date = require('./routes/date')
@@ -11,6 +13,10 @@ const cors = require('cors')
 // Middleware
 app.use(express.json())
 app.use(cors())
+app.use(helmet())
+
+// Logging
+app.use(morgan('combined'))
 
 // Routes
 app.use('/api/v1/clock', clock)
@@ -32,6 +38,7 @@ app.use((err, req, res, next) => {
 			message: err.message,
 		},
 	})
+	console.error(err.stack)
 })
 
 const PORT = process.env.PORT || 6600
@@ -39,9 +46,11 @@ const PORT = process.env.PORT || 6600
 const start = async () => {
 	try {
 		await connectPokeDB()
+		console.log('Connected to the database.')
 		app.listen(PORT, () => console.log(`Server started on port ${PORT}..`))
 	} catch (error) {
-		console.log(error)
+		console.error(error)
+		process.exit(1)
 	}
 }
 
