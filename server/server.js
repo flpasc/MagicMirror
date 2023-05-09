@@ -6,27 +6,35 @@ const date = require('./routes/date')
 const pokemon = require('./routes/pokemon')
 const weather = require('./routes/weather')
 const openai = require('./routes/openai')
-const scheduler = require('./services/scheduler')
 const cors = require('cors')
 
-//middleware
-app.get(express.json())
+// Middleware
+app.use(express.json())
 app.use(cors())
 
-//routes
+// Routes
 app.use('/api/v1/clock', clock)
 app.use('/api/v1/date', date)
 app.use('/api/v1/poke', pokemon)
 app.use('/api/v1/weather', weather)
 app.use('/api/v1/openai', openai)
 
+// Error handling middleware
 app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', '*')
-	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-	next()
+	const error = new Error('Not Found')
+	error.status = 404
+	next(error)
 })
 
-const PORT = 6600
+app.use((err, req, res, next) => {
+	res.status(err.status || 500).json({
+		error: {
+			message: err.message,
+		},
+	})
+})
+
+const PORT = process.env.PORT || 6600
 
 const start = async () => {
 	try {
